@@ -2,8 +2,12 @@
 __pycache__/
 .pytest_cache/
 *.pyc
+*.egg-info/
+build/
+dist/
+*.egg
+*.whl
 data/
 weights/
 calib/
 .DS_Store
-
