@@ -1,0 +1,44 @@
+capture:
+  device: 0
+  width: 1920
+  height: 1080
+  fps: 30
+  backend: opencv
+  calib_file: calib/endoscope_001.json
+preprocess:
+  target_size: 512
+  clahe_clip: 2.0
+  clahe_tile: 8
+  highlight_threshold: 245
+  queue_capacity: 8
+model:
+  segmentation: weights/deeplabv3p_resnet50.onnx
+  depth: weights/dpt_hybrid_midas.onnx
+  input_size: 512
+  yolo:
+    seg: weights/yolov8s-seg.pt
+    pose: weights/yolov8s-pose.pt
+    det: weights/yolov8s.pt
+    conf: 0.45
+    imgsz: 512
+tracker:
+  orb_features: 1500
+  kf_process_noise: 0.01
+  kf_measure_noise: 0.5
+  off_path_threshold_mm: 10.0
+collision:
+  dist_warn_mm: 8.0
+  lumen_ratio_contact: 0.55
+  white_area_max: 0.08
+  strong_threshold: 60.0
+  confirm_frames: 3
+scoring:
+  w_path: 0.40
+  w_collision: 0.35
+  w_time: 0.15
+  w_flow: 0.10
+  template_id: default_exam
+db:
+  path: data/training.db
+  archive_dir: data/sessions
+
