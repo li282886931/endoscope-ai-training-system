@@ -1,4 +1,0 @@
-[console_scripts]
-endoscope-training-api = endoscope_ai_training.app.cli:run_api
-endoscope-training-demo-data = endoscope_ai_training.app.cli:create_demo_data
-endoscope-training-ui = endoscope_ai_training.app.cli:run_ui
